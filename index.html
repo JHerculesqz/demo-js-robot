@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh">
+    <meta charset="UTF-8">
+    <title>图灵机器人</title>
+    <script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/RobotUtils.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#btnSpeak").click(function(){
+                var strAppKey = "64b4cfa386d142d6acd85170835f15c9";
+                var strInfo = $("#inputSpeak").val();
+                var strUserId = "JHercules";
+                robotUtils.speak(strAppKey, strInfo, strUserId, function(result){
+                    if(100000 == result.code){
+                        var strOldRes = $("#inputRes").text();
+                        $("#inputRes").text(strOldRes + result.text + "\n");
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <input id="inputSpeak" type="text"/>
+    <button id="btnSpeak">对话</button><br/><br/>
+    <textarea id="inputRes" style="width:300px;height: 200px;"></textarea>
+</body>
+</html>
